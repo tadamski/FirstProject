@@ -1,0 +1,48 @@
+import java.util.Scanner;
+import java.util.ArrayList;
+
+public class FirstProject {
+
+    public static void main(String[] args) {
+
+
+        // Tworzenie obiektu typu Scanner
+        Scanner scan = new Scanner(System.in);
+
+        ArrayList<String> task = new ArrayList<>();
+
+        String userChoice;
+
+        // Wyświetlenie menu
+        do {
+            System.out.println("MENU\n 1. Pokaż zadania\n 2. Dodaj nowe zadanie\n 3. Zakończ zadanie\n Q. Zakończ program");
+            System.out.print(" \n Wybierz opcję: ");
+            userChoice = scan.nextLine();
+
+            // Zmiana na wielkie litery
+            userChoice = userChoice.toUpperCase();
+
+
+            switch (userChoice) {
+                case "1": for (int i = 0; i < task.size(); i++)
+                            System.out.println(" \n" + task.get(i));
+                            System.out.println(" ");
+                            break;
+
+                case "2": System.out.println(" \n Dodaj nowe zadanie: ");
+                            String addedTask = scan.nextLine();
+                            task.add(addedTask);
+                            System.out.println(" ");
+                            break;
+
+                case "3": System.out.println("Zadanie zakończone");
+                            break;
+
+                case "Q": System.out.println(" \n Do widzenia");
+                            break;
+            }
+        } while (!"Q".equals(userChoice));
+
+
+    }
+}
