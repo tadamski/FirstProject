@@ -9,6 +9,7 @@ public class FirstProject {
         // Tworzenie obiektu typu Scanner
         Scanner scan = new Scanner(System.in);
 
+        // Tworzenie listy do przechowywania zadań
         ArrayList<String> task = new ArrayList<>();
 
         String userChoice;
@@ -22,7 +23,7 @@ public class FirstProject {
             // Zmiana na wielkie litery
             userChoice = userChoice.toUpperCase();
 
-
+            // Oczekiwanie na wybór użytkownika
             switch (userChoice) {
                 case "1": for (int i = 0; i < task.size(); i++) {
                     System.out.println(" \n [ ]" + task.get(i));
@@ -32,6 +33,10 @@ public class FirstProject {
 
                 case "2": System.out.println(" \n Dodaj nowe zadanie: ");
                             String addedTask = scan.nextLine();
+                            if (addedTask.isBlank()) {
+                    System.out.println("Zadanie nie może być puste. Spróbuj ponownie");
+                            }
+                            else
                             task.add(addedTask);
                             System.out.println(" ");
                             break;
