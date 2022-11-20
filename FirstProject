@@ -10,9 +10,10 @@ public class FirstProject {
         Scanner scan = new Scanner(System.in);
 
         // Tworzenie listy do przechowywania zadań
-        ArrayList<String> task = new ArrayList<>();
+        ArrayList<Task> tasks = new ArrayList<>();
 
         String userChoice;
+        String taskName;
 
         // Wyświetlenie menu
         do {
@@ -25,30 +26,43 @@ public class FirstProject {
 
             // Oczekiwanie na wybór użytkownika
             switch (userChoice) {
-                case "1": for (int i = 0; i < task.size(); i++) {
-                    System.out.println(" \n [ ]" + task.get(i));
-                }
-                            System.out.println(" ");
-                            break;
+                case "1":
+                    for (int i = 0; i < tasks.size(); i++) {
+                        System.out.println("[" + tasks.get(i) + "]");
+                    }
+                    break;
 
-                case "2": System.out.println(" \n Dodaj nowe zadanie: ");
-                            String addedTask = scan.nextLine();
-                            if (addedTask.isBlank()) {
-                    System.out.println("Zadanie nie może być puste. Spróbuj ponownie");
-                            }
-                            else
-                            task.add(addedTask);
-                            System.out.println(" ");
-                            break;
+                case "2":
+                    System.out.println(" \n Dodaj nowe zadanie: ");
+                    taskName = scan.nextLine();
+                    if (taskName.isBlank()) {
+                        System.out.println("Zadanie nie może być puste. Spróbuj ponownie");
+                    } else {
+                        tasks.add(new Task(taskName));
+                    }
+                    System.out.println(" ");
+                    break;
 
-                case "3": for (int i = 0; i < task.size(); i++) {
-                    System.out.println(" \n [x]" + task.get(i));
-                }
-                            System.out.println(" ");
-                            break;
+                case "3":
+                    System.out.println(" \n Podaj nazwe zadania do ukończenia: ");
+                    taskName = scan.nextLine();
+                    if (taskName.isBlank()) {
+                        System.out.println("Zadanie nie może być puste. Spróbuj ponownie");
+                        break;
+                    }
+                    boolean found = false;
+                    for(Task task: tasks){
+                        if(task.getName().equals(taskName)){
+                            task.finish();
+                            found = true;
+                        }
+                    }
+                    if(!found) System.out.println("Nie ma takiego zadania. Spróbuj ponownie");
+                    break;
 
-                case "Q": System.out.println(" \n Do widzenia");
-                            break;
+                case "Q":
+                    System.out.println(" \n Do widzenia");
+                    break;
             }
         } while (!"Q".equals(userChoice));
 

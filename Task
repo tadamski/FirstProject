@@ -1,0 +1,33 @@
+public class Task {
+    private String name;
+    private boolean finished;
+
+    public Task(String name) {
+        this.name = name;
+        this.finished = false;
+    }
+
+    public void finish(){
+        finished = true;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public boolean isFinished() {
+        return finished;
+    }
+
+    @Override
+    public String toString() {
+        String finishedMark;
+        if(finished){
+            finishedMark = " [x]";
+        } else {
+            finishedMark = " []";
+        }
+        return name + finishedMark;
+    }
+}
+
